@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.HandlerMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by panlingxiao on 2016/6/20.
@@ -15,9 +18,12 @@ public class TestController {
     private static Logger LOG = LoggerFactory.getLogger(TestController.class);
 
     @RequestMapping(value="/test",method= RequestMethod.GET)
-    public String test(Model model){
+    public String test(Model model,HttpServletRequest request){
         LOG.info("Handler 执行!!!");
-        model.addAttribute("test","test");
+        model.addAttribute("test", "test");
+        Object val = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+        System.out.println(val);
+
         return "test";
     }
 
