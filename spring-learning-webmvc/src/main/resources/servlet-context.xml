@@ -10,8 +10,14 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+
+
       <context:component-scan base-package="com.panlingxiao.spring.learning.webmvc.controller"/>
 
+        <!--默认会添加两个HandlerMapping
+            BeanNameUrlHandlerMapping:将Bean的名字与请求的URL做映射，
+            RequestMappingHadnlerMappping：@RequestMapping(value="/aa")
+        -->
        <mvc:annotation-driven/>
 
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -19,6 +25,13 @@
               <property name="suffix" value=".jsp"/>
        </bean>
 
+
+    <!--
+            会在HandlerMapping中多添加一个SimpleUrlHandlerMapping
+     -->
+    <mvc:default-servlet-handler/>
+
+    <!--最后都会被包装成MappedInterceptor-->
     <mvc:interceptors>
         <bean class="com.panlingxiao.spring.learning.webmvc.interceptor.Interceptor1"/>
         <!--只拦截/test-->
@@ -34,7 +47,7 @@
             <bean class="com.panlingxiao.spring.learning.webmvc.interceptor.Interceptor3"/>
         </mvc:interceptor>
 
-
     </mvc:interceptors>
+
 
 </beans>

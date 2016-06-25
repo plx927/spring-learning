@@ -13,24 +13,25 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by panlingxiao on 2016/6/20.
  */
+@RequestMapping("/aa")
 @Controller
 public class TestController {
     private static Logger LOG = LoggerFactory.getLogger(TestController.class);
 
-    @RequestMapping(value="/test",method= RequestMethod.GET)
+    //最后都会被转换成RequestMappingInfo
+    @RequestMapping(value={"/test","abc","def"},method= RequestMethod.GET)
     public String test(Model model,HttpServletRequest request){
         LOG.info("Handler 执行!!!");
         model.addAttribute("test", "test");
         Object val = request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         System.out.println(val);
-
         return "test";
     }
 
     @RequestMapping(value="test1",method= RequestMethod.GET)
     public String test1(Model model){
         LOG.info("Handler 执行!!!");
-        model.addAttribute("test1","test1");
+        model.addAttribute("test1", "test1");
         return "test1";
     }
 
@@ -38,6 +39,10 @@ public class TestController {
     public String test2(Model model){
         LOG.info("Handler 执行!!!");
         return "test2";
+    }
+
+    public String other(){
+        return "";
     }
 
 
