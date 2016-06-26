@@ -21,6 +21,14 @@ public class Interceptor2 extends HandlerInterceptorAdapter{
         return super.preHandle(request, response, handler);
     }
 
+    /**
+     * 当没有HandlerMethod与请求的URL匹配时,而拦截器可以拦截请求,那么此时传入的ModelAndView就为null
+     * @param request
+     * @param response
+     * @param handler
+     * @param modelAndView
+     * @throws Exception
+     */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         LOG.info("Interceptor2 postHandle");

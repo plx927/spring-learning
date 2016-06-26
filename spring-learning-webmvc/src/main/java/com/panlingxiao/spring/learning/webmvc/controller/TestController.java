@@ -2,7 +2,6 @@ package com.panlingxiao.spring.learning.webmvc.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by panlingxiao on 2016/6/20.
  */
-@RequestMapping("/aa")
-@Controller
+//@RequestMapping("/aa")
+//@Controller
 public class TestController {
     private static Logger LOG = LoggerFactory.getLogger(TestController.class);
 

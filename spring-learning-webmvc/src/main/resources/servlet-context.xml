@@ -26,10 +26,12 @@
        </bean>
 
 
+
+
     <!--
-            会在HandlerMapping中多添加一个SimpleUrlHandlerMapping
+       会在HandlerMapping中多添加一个SimpleUrlHandlerMapping，查看具体实现
      -->
-    <mvc:default-servlet-handler/>
+    <!--<mvc:default-servlet-handler/>-->
 
     <!--最后都会被包装成MappedInterceptor-->
     <mvc:interceptors>
