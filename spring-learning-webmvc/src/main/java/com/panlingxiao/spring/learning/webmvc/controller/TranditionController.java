@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by panlingxiao on 2016/6/25.
  * 使用传统的BeanNameUrlHandlerMapping进行对Http请求处理
+ * 其对应的HandlerAdapter是SimpleControllerHandlerAdapter
  */
 @org.springframework.stereotype.Controller("/hello")
 public class TranditionController implements Controller{

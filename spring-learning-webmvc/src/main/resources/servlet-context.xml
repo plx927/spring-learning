@@ -21,7 +21,9 @@
             BeanNameUrlHandlerMapping:将Bean的名字与请求的URL做映射，
             RequestMappingHadnlerMappping：@RequestMapping(value="/aa")
         -->
-       <mvc:annotation-driven/>
+       <mvc:annotation-driven>
+
+       </mvc:annotation-driven>
 
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
               <property name="prefix" value="/WEB-INF/jsp/"/>
