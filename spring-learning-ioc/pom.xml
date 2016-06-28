@@ -9,9 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.panlingxiao.spring</groupId>
     <artifactId>spring-learning-ioc</artifactId>
-    <packaging>pom</packaging>
 
 
     <dependencies>
