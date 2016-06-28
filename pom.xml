@@ -29,6 +29,10 @@
         <spring.version>3.2.4.RELEASE</spring.version>
     </properties>
 
+    <modules>
+        <module>spring-learning-ioc</module>
+        <module>spring-learning-aop</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -143,6 +147,14 @@
                 <artifactId>lombok</artifactId>
                 <version>1.14.4</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.1.3.Final</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

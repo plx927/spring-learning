@@ -22,7 +22,10 @@
             RequestMappingHadnlerMappping：@RequestMapping(value="/aa")
         -->
        <mvc:annotation-driven>
-
+           <!--会自动设置到RequestMappingHandlerAdapter.customArgumentResolvers中-->
+           <mvc:argument-resolvers>
+               <bean class="com.panlingxiao.spring.learning.webmvc.resolver.argument.MyHandlerMethodArgumentResolver"></bean>
+           </mvc:argument-resolvers>
        </mvc:annotation-driven>
 
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

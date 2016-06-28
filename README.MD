@@ -22,3 +22,4 @@ org.springframework.web.servlet.HandlerMapping=
 org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping
 org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
 
+参考SpringFramework文档---22.4 Handler mappings
