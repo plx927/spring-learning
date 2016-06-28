@@ -32,7 +32,9 @@ public class Interceptor2 extends HandlerInterceptorAdapter{
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         LOG.info("Interceptor2 postHandle");
-        modelAndView.addObject("interceptor2","interceptor2");
+        if(modelAndView != null){
+            modelAndView.addObject("interceptor2","interceptor2");
+        }
         super.postHandle(request, response, handler, modelAndView);
     }
 

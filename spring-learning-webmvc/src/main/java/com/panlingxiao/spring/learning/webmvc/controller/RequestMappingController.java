@@ -30,6 +30,7 @@ public class RequestMappingController {
         System.out.println("myTest3");
     }
 
+
     /*
      * 测试通配符的路径映射
      * 这种写法是比较消耗查询性能的，因为它需要整体遍历所有的RequestMappingInfo
@@ -54,6 +55,7 @@ public class RequestMappingController {
     public void myTest6(){
         System.out.println("myTest6");
     }
+
 
 
 

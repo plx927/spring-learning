@@ -15,7 +15,7 @@
     -->
     <context:property-placeholder location="classpath:test.properties"/>
 
-      <context:component-scan base-package="com.panlingxiao.spring.learning.webmvc.controller"/>
+    <context:component-scan base-package="com.panlingxiao.spring.learning.webmvc.controller"/>
 
         <!--默认会添加两个HandlerMapping
             BeanNameUrlHandlerMapping:将Bean的名字与请求的URL做映射，
@@ -26,6 +26,9 @@
            <mvc:argument-resolvers>
                <bean class="com.panlingxiao.spring.learning.webmvc.resolver.argument.MyHandlerMethodArgumentResolver"></bean>
            </mvc:argument-resolvers>
+
+
+
        </mvc:annotation-driven>
 
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

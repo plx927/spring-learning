@@ -1,9 +1,11 @@
 package com.panlingxiao.spring.learning.webmvc.controller;
 
 import com.panlingxiao.spring.learning.webmvc.domain.Person;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -35,6 +37,20 @@ public class HandlerAdapterController {
     @RequestMapping("/valid")
     public void testValidation(@Valid Person person,BindingResult errors){
         System.out.println("testValidation");
+    }
+
+    @RequestMapping("/exception")
+    public void testException(){
+        throw  new RuntimeException("测试抛个异常");
+    }
+
+    /**
+     * 通过@ResponseStatus直接响应结果
+     */
+    @ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "找不到女朋友!")
+    @RequestMapping("/response")
+    public void testResponseStatus(){
+
     }
 
 }
