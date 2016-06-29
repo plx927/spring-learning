@@ -3,6 +3,8 @@ package com.panlingxiao.spring.learning.webmvc.controller;
 import com.panlingxiao.spring.learning.webmvc.domain.Person;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -49,8 +51,7 @@ public class HandlerAdapterController {
      */
     @ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "找不到女朋友!")
     @RequestMapping("/response")
-    public void testResponseStatus(){
-
+    public void testResponseStatus(Model model,ModelMap modelMap){
     }
 
 }
