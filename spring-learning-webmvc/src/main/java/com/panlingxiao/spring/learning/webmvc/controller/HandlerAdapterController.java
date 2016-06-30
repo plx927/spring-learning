@@ -52,6 +52,23 @@ public class HandlerAdapterController {
     @ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "找不到女朋友!")
     @RequestMapping("/response")
     public void testResponseStatus(Model model,ModelMap modelMap){
+
+    }
+
+    /**
+     * 测试RequestMappingHandlerAdapter使用什么参数解析器来完成Bean的自动创建
+     * 底层实际使用的是ServletModelAttributeMethodProcessor
+     * @param p
+     */
+    @RequestMapping("/createBean")
+    public void testCreateBean(Person p){
+        System.out.println(p);
+    }
+
+
+    @RequestMapping("/simpleTypeMapping")
+    public void testSimpleTypeMapping(String abc){
+        System.out.println(abc);
     }
 
 }

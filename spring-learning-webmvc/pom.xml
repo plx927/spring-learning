@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.panlingxiao.spring</groupId>
-        <artifactId>spring-learning-parent</artifactId>
+        <artifactId>spring-learning</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
