@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by panlingxiao on 2016/7/1.
  * 分析HeadersRequestCondition是如何对HTTP请求头做映射的
- *
  * --headers中的元数据信息会被转变成HeaderExpression
  *
  */
@@ -25,7 +24,7 @@ public class HeadMappingController {
     }
 
     /**
-     * 理论上不支持这个格式，这种格式和上面的!aa是一样的
+     * 理论上不支持这个格式,表示请求头中必须有aa,但是值时多少无所谓
      */
     @RequestMapping(value="/myTest2",headers = {"aa"})
     public void myTest2(){
