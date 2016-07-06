@@ -1,7 +1,6 @@
 package com.panlingxiao.spring.learning.webmvc.annotation;
 
 import org.junit.Test;
-import org.springframework.http.InvalidMediaTypeException;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.mvc.condition.ConsumesRequestCondition;
 
@@ -12,6 +11,11 @@ import java.net.URL;
 /**
  * Created by panlingxiao on 2016/7/4.
  * ConsumeRequestCondition对MIME的解析处理
+ *
+ * Content-Type是请求代理对其发送数据的MIME的描述,用于告诉服务器端以哪种方式来进行处理。
+ *
+ * type/subType;attr1=value1;attr2;value2
+ *
  */
 public class ConsumesRequestConditionTest {
 
@@ -31,16 +35,6 @@ public class ConsumesRequestConditionTest {
 
     }
 
-    /**
-     * MediaType必须有/结尾
-     */
-    @Test(expected = InvalidMediaTypeException.class)
-    public void testParseMediaType(){
-        MediaType mediaType = MediaType.parseMediaType("application/");
-    }
-
-
-
     //Accept:text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
     @Test
     public void testHttpURLConnection() throws IOException {
@@ -49,5 +43,9 @@ public class ConsumesRequestConditionTest {
         String message = urlConnection.getResponseMessage();
         System.out.println(message);
     }
+
+
+
+
 
 }

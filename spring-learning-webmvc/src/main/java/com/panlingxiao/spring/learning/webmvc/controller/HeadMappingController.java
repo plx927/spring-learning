@@ -1,5 +1,6 @@
 package com.panlingxiao.spring.learning.webmvc.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -41,4 +42,17 @@ public class HeadMappingController {
     public void  myTest4(){
         System.out.println("headMapping,myTest4");
     }
+
+
+    /**
+     * 如果客户端没有发送Content-Type为application/json,则服务器产生415状态影响
+     */
+    @RequestMapping(value="/myTest5",consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public void myTest5(){
+        System.out.println("aa");
+    }
+
+
+
+
 }

@@ -23,3 +23,14 @@ org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping
 org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
 
 参考SpringFramework文档---22.4 Handler mappings
+
+
+##### ConsumesRequestCondition
+ConsumeRequestCondition用于匹配Http请求头中的Content-Type，判断服务器端是否能对客户端发送的Http数据进行消费处理。
+
+
+
+
+
+
+
