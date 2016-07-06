@@ -2,6 +2,7 @@ package com.panlingxiao.spring.learning.webmvc.annotation;
 
 import org.junit.Test;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.mvc.condition.ConsumesRequestCondition;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class ConsumesRequestConditionTest {
 
     @Test
     public void testCreateConsumeRequestCondition(){
-        String[] consumes = {"application/json"};
+        String[] consumes = {"application/json","!application/xml"};
         String[] headers = {"Content-Type!=text/html"};
         ConsumesRequestCondition consumesRequestCondition = new ConsumesRequestCondition(consumes,headers);
         System.out.println(consumesRequestCondition);
@@ -43,6 +44,67 @@ public class ConsumesRequestConditionTest {
         String message = urlConnection.getResponseMessage();
         System.out.println(message);
     }
+
+
+    /**
+     * -----------------测试ConsumeRequestCondition是如何对HttpServletRequest的Content-Type进行匹配的----------------
+     */
+
+
+    /*
+     * 当不设置任何ConsumeRequestCondition时，此时对于任何MediaType都能够成功匹配
+     * 但是在最后数据绑定时可能由于无法找到合适的HandlerMethodArgumentResolver而导致HttpMediaTypeNotSupportedException
+     */
+    @Test
+    public void testMatchMediaType1(){
+        ConsumesRequestCondition consumesRequestCondition = new ConsumesRequestCondition(new String[]{}, new String[]{});
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.addHeader("Content-Type",MediaType.APPLICATION_FORM_URLENCODED_VALUE);
+        ConsumesRequestCondition matchingCondition = consumesRequestCondition.getMatchingCondition(request);
+        System.out.println(matchingCondition);
+    }
+
+
+    // 当consume为*/*时,则对于任何MediaType都能够匹配
+    @Test
+    public void testMatchMediaType2(){
+        //  /*/, application/atom+xml
+        String[] consumes = {MediaType.ALL_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE};
+        ConsumesRequestCondition consumesRequestCondition = new ConsumesRequestCondition(consumes);
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        ConsumesRequestCondition matchingCondition = consumesRequestCondition.getMatchingCondition(request);
+        System.out.println(matchingCondition);
+    }
+
+
+    // 当consume设置为application/*时，此时可以匹配application/json
+    @Test
+    public void testMatchMediaType3(){
+        String[] consumes = {"application/*"};
+        ConsumesRequestCondition consumesRequestCondition = new ConsumesRequestCondition(consumes);
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.addHeader("Content-Type",MediaType.APPLICATION_ATOM_XML_VALUE);
+        ConsumesRequestCondition matchingCondition = consumesRequestCondition.getMatchingCondition(request);
+        System.out.println(matchingCondition);
+    }
+
+
+    // application/*+xml匹配application/atom+xml
+    @Test
+    public void testMatchMediaType4(){
+        String[] consumes = {"application/*+xml"};
+        ConsumesRequestCondition consumesRequestCondition = new ConsumesRequestCondition(consumes);
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.addHeader("Content-Type",MediaType.APPLICATION_ATOM_XML_VALUE);
+        ConsumesRequestCondition matchingCondition = consumesRequestCondition.getMatchingCondition(request);
+        System.out.println(matchingCondition);
+    }
+
+
+
+
+
+
 
 
 

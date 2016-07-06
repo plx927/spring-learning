@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.http.InvalidMediaTypeException;
 import org.springframework.http.MediaType;
 
+import java.util.BitSet;
 import java.util.List;
 
 /**
@@ -78,8 +79,41 @@ public class MediaTypeTest {
         infoMediaType(mediaType);
     }
 
+    @Test
+    public void testBitSet(){
+        BitSet bitSet = new BitSet();
+        bitSet.set(0);
+        System.out.println(bitSet);
+        bitSet.and(new BitSet(128));
+        System.out.println(bitSet);
+        bitSet.set(129);
+        System.out.println(bitSet);
+    }
 
 
+    //给出AbCdEf这六个字符,判断给定的字符是否在这个范围内，如果在则返回false，否则返回true
+    @Test
+    public void testBitSet2(){
+        BitSet bitSet = new BitSet(6);
+        bitSet.set('A');
+        bitSet.set('b');
+        bitSet.set('C');
+        bitSet.set('d');
+        bitSet.set('E');
+        bitSet.set('f');
+
+        BitSet bitSet2 = new BitSet(128);
+        bitSet2.set(0, 128);
+        System.out.println(bitSet2);
+
+
+        bitSet2.andNot(bitSet);
+        System.out.println(bitSet2);
+
+        System.out.println(bitSet2.get('b'));
+        System.out.println(bitSet2.get('c'));
+
+    }
 
 
 
