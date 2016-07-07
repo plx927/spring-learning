@@ -3,6 +3,8 @@ package com.panlingxiao.spring.learning.webmvc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.ServletWebRequest;
 
 /**
  * Created by panlingxiao on 2016/6/26.
@@ -56,6 +58,16 @@ public class RequestMappingController {
         System.out.println("myTest6");
     }
 
+
+    /**
+     * 测试POST请求的ContentType
+     */
+    @RequestMapping(value = "/hello",method = RequestMethod.POST)
+    public String testPostRequestContentType(ServletWebRequest servletWebRequest){
+        String contentType = servletWebRequest.getHeader("Content-Type");
+        System.out.println(contentType);
+        return "hello";
+    }
 
 
 

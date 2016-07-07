@@ -12,5 +12,12 @@
 </head>
 <body>
   <h1>使用BeannameUrlHadnlerMapping映射</h1>
+
+    <form action="mapping/hello" method="post">
+      aa：<input name="aa"/>
+      <input type="submit">
+    </form>
+
+
 </body>
 </html>

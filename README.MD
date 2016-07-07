@@ -27,7 +27,12 @@ org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
 
 ##### ConsumesRequestCondition
 ConsumeRequestCondition用于匹配Http请求头中的Content-Type，判断服务器端是否能对客户端发送的Http数据进行消费处理。
+一个ConsumeRequestCondition中的信息最后会对应一个或者多个ConsumeMediaTypeExpression
 
+SpringMVC对于Contetn-Type的匹配检查其实本质上有两个地方:
+1.第一个地方是在RequestMappingHandlerMapping根据@RequestMapping中配置的header(Content-Type)以及consumes来和HttpServletRequest中的Content-Type进行匹配。
+2.第二个地方是在RequestMappingHandlerAdapter中使用HandlerMethodArgumentResolver时，
+  HandlerMethodArgumentResolver使用HttpMessageConverter完成方法参数绑定的时候，同样需要根据HttpServletRequest的Content-Type进行检查。
 
 
 
