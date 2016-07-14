@@ -7,6 +7,7 @@ import org.springframework.util.PathMatcher;
 
 /**
  * Created by panlingxiao on 2016/6/27.
+ * 分析Spring请求的URL的路径与Handler之间的映射关系
  */
 public class PathMatcherTest {
 

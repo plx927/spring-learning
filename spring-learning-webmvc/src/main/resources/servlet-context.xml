@@ -36,15 +36,10 @@
               <property name="suffix" value=".jsp"/>
        </bean>
 
-
-
-
-
-
     <!--
-       会在HandlerMapping中多添加一个SimpleUrlHandlerMapping，查看具体实现
+       会在HandlerMapping中多添加一个SimpleUrlHandlerMapping，查看具体实现，HadnlerMapping中封装的Handler为DefaultServletHttpRequestHandler
      -->
-    <!--<mvc:default-servlet-handler/>-->
+    <mvc:default-servlet-handler/>
 
     <!--最后都会被包装成MappedInterceptor-->
     <mvc:interceptors>
@@ -61,8 +56,13 @@
             <mvc:exclude-mapping path="/test"/>
             <bean class="com.panlingxiao.spring.learning.webmvc.interceptor.Interceptor3"/>
         </mvc:interceptor>
-
     </mvc:interceptors>
 
+
+    <!--
+        配置了mvc:resources之后，SpringMVC会自动添加一个org.springframework.web.servlet.resource.ResourceHttpRequestHandler
+        并且将该Handler通过SimpleUrlHandlerMapping来进行映射
+    <mvc:resources mapping="/res/**" location="/res/*"/>
+        -->
 
 </beans>
