@@ -19,7 +19,11 @@ import java.util.Locale;
 @Controller
 public class DataBinderController {
 
-
+    /**
+     * 源码分析这里的DataBinder是在哪里生成，哪里传入。
+     * @param locale
+     * @param dataBinder
+     */
     @InitBinder(value="person1")
     public void initBinder(Locale locale,WebDataBinder dataBinder){
         System.out.println(locale.getCountry()+","+locale.getDisplayName());
