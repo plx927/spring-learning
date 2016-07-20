@@ -136,6 +136,13 @@
             </dependency>
 
             <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.2</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>1.7.13</version>
@@ -214,7 +221,11 @@
                 <version>18.0</version>
             </dependency>
 
-
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

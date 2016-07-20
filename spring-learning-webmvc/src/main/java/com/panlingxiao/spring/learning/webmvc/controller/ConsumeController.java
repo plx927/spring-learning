@@ -44,10 +44,15 @@ public class ConsumeController {
     /**
      * 但是HttpServletRequest必须设置Content-Type，否则数据无法绑定
      * 在使用Ajax发送异步请求的时候，也必须制定Content-Type，否则会返回415状态码
+     * org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded' not supported
+     * org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'multipart/form-data;boundary=----WebKitFormBoundaryB2jCMsbxvd8GFQJg' not supported
      */
     @RequestMapping(value = "/bindPersonByJson")
     public void bindPersonByJson(@RequestBody Person person){
     }
+
+
+
 
 
 
