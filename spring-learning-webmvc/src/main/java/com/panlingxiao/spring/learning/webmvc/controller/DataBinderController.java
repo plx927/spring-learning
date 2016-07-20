@@ -1,6 +1,7 @@
 package com.panlingxiao.spring.learning.webmvc.controller;
 
 import com.panlingxiao.spring.learning.webmvc.domain.Person;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -33,7 +37,12 @@ public class DataBinderController {
 
     @RequestMapping("/myTest1")
     @ResponseBody
-    public Person myTest1(Person p){
+    public Person myTest1(Person p,HttpServletRequest request) throws  Exception{
+        ServletInputStream inputStream = request.getInputStream();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        IOUtils.copy(inputStream, bos);
+        byte[] bytes = bos.toByteArray();
+        System.out.println(new String(bytes));
         System.out.println(p);
         return  p;
     }

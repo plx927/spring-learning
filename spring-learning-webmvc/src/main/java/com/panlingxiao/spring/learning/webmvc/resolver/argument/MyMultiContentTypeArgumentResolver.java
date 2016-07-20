@@ -67,8 +67,8 @@ public class MyMultiContentTypeArgumentResolver implements HandlerMethodArgument
                         }
                     }
                 }
-                MyMethodParameter myMethodParameter = new MyMethodParameter(parameter, parameter.getParameterAnnotation(MyRequestBody.class));
-                return requestResponseBodyMethodProcessor.resolveArgument(myMethodParameter, mavContainer, webRequest, binderFactory);
+                 MyMethodParameter myMethodParameter = new MyMethodParameter(parameter, parameter.getParameterAnnotation(MyRequestBody.class));
+                return requestResponseBodyMethodProcessor.resolveArgument(parameter, mavContainer, webRequest, binderFactory);
             }
         }
         return null;

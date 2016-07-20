@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
  */
 public class MyMethodParameter extends MethodParameter {
 
-    private RequestBody requiredAnno;
+    private RequestBody requiredAnno ;
     private RequestBody noReqeuiredAnno;
     private MyRequestBody myRequestBody;
 
@@ -36,7 +36,7 @@ public class MyMethodParameter extends MethodParameter {
     }
 
     private static class ConsutructAnnotationClass{
-        public void test(@RequestBody() String st1,@RequestBody Integer num){
+        public void test(@RequestBody() String st1,@RequestBody(required = false) Integer num){
         }
     }
 

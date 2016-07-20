@@ -49,6 +49,7 @@ public class ConsumeController {
      */
     @RequestMapping(value = "/bindPersonByJson")
     public void bindPersonByJson(@RequestBody Person person){
+        System.out.println(person);
     }
 
 
