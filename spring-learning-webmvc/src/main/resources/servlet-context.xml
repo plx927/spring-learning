@@ -25,6 +25,7 @@
            <!--会自动设置到RequestMappingHandlerAdapter.customArgumentResolvers中-->
            <mvc:argument-resolvers>
                <bean class="com.panlingxiao.spring.learning.webmvc.resolver.argument.MyHandlerMethodArgumentResolver"></bean>
+               <bean class="com.panlingxiao.spring.learning.webmvc.resolver.argument.MyMultiContentTypeArgumentResolver"/>
            </mvc:argument-resolvers>
 
 

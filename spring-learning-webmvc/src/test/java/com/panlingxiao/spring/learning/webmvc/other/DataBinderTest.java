@@ -20,6 +20,7 @@ public class DataBinderTest {
         mutablePropertyValues.add("name","aa");
         mutablePropertyValues.add("age","12");
         mutablePropertyValues.add("age12","12");
+        mutablePropertyValues.add("hobby","sing,dance");
         dataBinder.bind(mutablePropertyValues);
         System.out.println(p);
     }
