@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Data
 @XmlRootElement
-@XmlType(propOrder = {"birth","name","age"})
+@XmlType(propOrder = {"birth","name","age","hobby"})
 @XStreamAliasType("person")
 public class Person {
 

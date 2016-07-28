@@ -63,7 +63,7 @@
     <!--
         配置了mvc:resources之后，SpringMVC会自动添加一个org.springframework.web.servlet.resource.ResourceHttpRequestHandler
         并且将该Handler通过SimpleUrlHandlerMapping来进行映射
-    <mvc:resources mapping="/res/**" location="/res/*"/>
-        -->
+    <mvc:resources mapping="/res/**" location="/res/"/>
+    -->
 
 </beans>
