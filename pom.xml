@@ -34,6 +34,7 @@
         <module>spring-learning-aop</module>
         <module>spring-learning-conversion</module>
         <module>spring-learning-cache</module>
+        <module>spring-learning-task</module>
     </modules>
 
     <dependencyManagement>
