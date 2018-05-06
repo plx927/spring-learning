@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!-- 定义PointCut -->
+    <bean id="settersAndAbsquatulatePointcut"
+          class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+        <property name="patterns">
+            <list>
+                <value>.*set.*</value>
+                <value>.*absquatulate</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 定义Advice -->
+    <bean class="com.panlingxiao.spring.aop.advice.MyBeforeAdvice" id="myBeforeAdvice"/>
+
+
+    <bean id="settersAndGoAdvisor"
+          class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="myBeforeAdvice"/>
+        <property name="patterns">
+            <list>
+                <value>.*set.*</value>
+                <value>.*go.*</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="personService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames">
+            <p:list>
+                <value>settersAndGoAdvisor</value>
+            </p:list>
+        </property>
+        <property name="proxyInterfaces" value="com.panlingxiao.spring.aop.service.PersonService"/>
+        <property name="target" ref="personServiceImpl"/>
+    </bean>
+
+    <bean class="com.panlingxiao.spring.aop.service.impl.PersonServiceImpl" id="personServiceImpl"/>
+
+
+</beans>

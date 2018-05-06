@@ -1,0 +1,24 @@
+@startuml
+
+class Client{
+
+}
+
+abstract class Handler{
+    Handler successor
+    handleRequest()
+}
+
+class ConcertHandler{
+ handleRequest()
+}
+
+
+Handler <|... Client
+
+
+Handler <|-- ConcertHandler
+
+Handler  o-- Handler
+
+@enduml
