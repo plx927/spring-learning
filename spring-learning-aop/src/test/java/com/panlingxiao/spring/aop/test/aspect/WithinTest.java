@@ -33,9 +33,9 @@ public class WithinTest extends AopBaseTest {
     @Test
     public void testWithinServiceLayer() {
         categoryService.addCategory();
-        System.out.println("----------------------");
-        categoryService.listCategories();
-        System.out.println("----------------------");
+//        System.out.println("----------------------");
+//        categoryService.listCategories();
+//        System.out.println("----------------------");
     }
 
 }
