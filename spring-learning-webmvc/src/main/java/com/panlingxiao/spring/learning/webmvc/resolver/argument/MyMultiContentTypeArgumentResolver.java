@@ -43,8 +43,7 @@ public class MyMultiContentTypeArgumentResolver implements HandlerMethodArgument
             if (MediaType.APPLICATION_FORM_URLENCODED_VALUE.equals(contentType) || contentType.startsWith(MediaType.MULTIPART_FORM_DATA_VALUE)) {
                 if (servletModelAttributeMethodProcessor == null) {
                     RequestMappingHandlerAdapter requestMappingHandlerAdapter = applicationContext.getBean(RequestMappingHandlerAdapter.class);
-                    HandlerMethodArgumentResolverComposite argumentResolvers = requestMappingHandlerAdapter.getArgumentResolvers();
-                    List<HandlerMethodArgumentResolver> resolvers = argumentResolvers.getResolvers();
+                    List<HandlerMethodArgumentResolver> resolvers = requestMappingHandlerAdapter.getArgumentResolvers();
                     for (HandlerMethodArgumentResolver handlerMethodArgumentResolver : resolvers) {
                         Class<? extends HandlerMethodArgumentResolver> clazz = handlerMethodArgumentResolver.getClass();
                         if (clazz == ServletModelAttributeMethodProcessor.class) {
@@ -57,8 +56,7 @@ public class MyMultiContentTypeArgumentResolver implements HandlerMethodArgument
             } else {
                 if (requestResponseBodyMethodProcessor == null) {
                     RequestMappingHandlerAdapter requestMappingHandlerAdapter = applicationContext.getBean(RequestMappingHandlerAdapter.class);
-                    HandlerMethodArgumentResolverComposite argumentResolvers = requestMappingHandlerAdapter.getArgumentResolvers();
-                    List<HandlerMethodArgumentResolver> resolvers = argumentResolvers.getResolvers();
+                    List<HandlerMethodArgumentResolver> resolvers = requestMappingHandlerAdapter.getArgumentResolvers();
                     for (HandlerMethodArgumentResolver handlerMethodArgumentResolver : resolvers) {
                         Class<? extends HandlerMethodArgumentResolver> clazz = handlerMethodArgumentResolver.getClass();
                         if (clazz == RequestResponseBodyMethodProcessor.class) {

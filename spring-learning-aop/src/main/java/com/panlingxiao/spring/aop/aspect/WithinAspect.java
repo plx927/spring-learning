@@ -21,21 +21,23 @@ public class WithinAspect {
     /**
      * 针对包以及子包设置切入点
      */
-    @Pointcut("within(com.panlingxiao.spring.aop.service..*)")
-    public void isServiceLayer() {
+    @Pointcut("within(com.panlingxiao.spring.aop.dao..*)")
+    public void isDaoLayer() {
     }
 
 
+    /**
+     * 对productService的所有前置通知添加切面
+     */
     @Before("isProductService()")
     public void serviceBeforeAdvice() {
         System.out.println("before productService invoke");
     }
 
 
-    @AfterReturning(pointcut = "isServiceLayer()")
+    @AfterReturning(pointcut = "isDaoLayer()")
     public void serviceAfterAdvice() {
-        log.info("after ServiceLayer invoke");
+        log.info("after daoLayer invoke");
     }
-
 
 }

@@ -3,7 +3,6 @@ package com.panlingxiao.spring.aop.test.dynamic;
 import com.panlingxiao.spring.aop.dynamic.JdkDynamicProxy;
 import com.panlingxiao.spring.aop.proxy.RealSubject;
 import com.panlingxiao.spring.aop.proxy.Subject;
-import org.junit.Test;
 
 import java.lang.reflect.Proxy;
 
@@ -14,13 +13,12 @@ import java.lang.reflect.Proxy;
 public class DynamicProxyTest {
 
 
-    @Test
-    public void testProxy() {
+    public static void main(String[] args) {
+        // 开启将生成的字节码写入到本地磁盘
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         RealSubject subject = new RealSubject();
-        JdkDynamicProxy invocationHandler = new JdkDynamicProxy(subject);
-        Subject proxy = (Subject) Proxy.newProxyInstance(this.getClass().getClassLoader(), subject.getClass().getInterfaces(), invocationHandler);
+        Subject proxy = JdkDynamicProxy.getProxy(subject);
         proxy.sayHello("world");
-
         // JDK内置用于判断一个Class是否是代理类
         System.out.println(Proxy.isProxyClass(proxy.getClass()));
         System.out.println(Proxy.isProxyClass(subject.getClass()));
