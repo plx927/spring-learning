@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
+    <bean class="com.panlingxiao.spring.aop.advice.MyBeforeAdvice" id="myBeforeAdvice"/>
+    <bean class="com.panlingxiao.spring.aop.advice.MyAfterAdvice" id="myAfterAdvice"/>
+
+    <bean class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="myBeforeAdvice"/>
+        <property name="pattern" value="com.panlingxiao.spring.aop.service.impl.*"/>
+    </bean>
+
+    <bean class="com.panlingxiao.spring.aop.advisor.MyStaticMethodPointcutAdvisor">
+        <constructor-arg name="advice" ref="myAfterAdvice"/>
+        <constructor-arg name="pointcutExpression" value="within(com.panlingxiao.spring.aop.service..*)"/>
+    </bean>
+
+
+    <bean class="com.panlingxiao.spring.aop.service.impl.ProductServiceImpl"/>
+
+
+</beans>

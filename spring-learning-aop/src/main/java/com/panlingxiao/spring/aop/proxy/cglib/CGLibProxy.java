@@ -1,4 +1,4 @@
-package com.panlingxiao.spring.aop.cglib;
+package com.panlingxiao.spring.aop.proxy.cglib;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.Enhancer;
@@ -8,16 +8,18 @@ import org.springframework.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 @Slf4j
-public class DemoMethodInterceptor implements MethodInterceptor {
+public class CGLibProxy implements MethodInterceptor {
 
     private Object target;
 
+    @SuppressWarnings("unchecked")
     public static <T> T getProxy(Object target) {
         Enhancer enhancer = new Enhancer();
-        DemoMethodInterceptor demoMethodInterceptor = new DemoMethodInterceptor();
+        CGLibProxy demoMethodInterceptor = new CGLibProxy();
         demoMethodInterceptor.target = target;
         enhancer.setCallback(demoMethodInterceptor);
         enhancer.setSuperclass(target.getClass());
+        // 动态字节码创建子类实例
         return (T) enhancer.create();
     }
 
@@ -26,8 +28,8 @@ public class DemoMethodInterceptor implements MethodInterceptor {
         try {
             log.info("before real subject invoke");
             Object result = method.invoke(target, args);
-            //methodProxy.invokeSuper(proxy,args);
 
+            //methodProxy.invokeSuper(proxy,args);
             return result;
         } catch (Exception e) {
             log.error("target execute fail:", e);

@@ -1,4 +1,4 @@
-package com.panlingxiao.spring.aop.dynamic;
+package com.panlingxiao.spring.aop.proxy.jdk;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +15,7 @@ public class JdkDynamicProxy implements InvocationHandler {
     private Object target;
 
 
+    @SuppressWarnings("unchecked")
     public static <T> T getProxy(Object target) {
         JdkDynamicProxy jdkDynamicProxy = new JdkDynamicProxy();
         jdkDynamicProxy.target = target;

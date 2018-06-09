@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean class="com.panlingxiao.spring.aop.service.impl.NativeWaiter" id="nativeWaiter"/>
+    <bean class="com.panlingxiao.spring.aop.advice.ControllablePerformanceMonitor" id="monitor"/>
+
+    <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="waiter">
+        <property name="interceptorNames" value="monitor"/>
+        <property name="proxyTargetClass" value="true"/>
+        <property name="target" ref="nativeWaiter"/>
+        <property name="interfaces" value="com.panlingxiao.spring.aop.service.Monitorable"/>
+    </bean>
+</beans>

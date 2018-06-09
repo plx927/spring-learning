@@ -1,5 +1,7 @@
 package com.panlingxiao.spring.aop.test.api;
 
+import com.panlingxiao.spring.aop.advice.MyAfterAdvice;
+import com.panlingxiao.spring.aop.advice.MyBeforeAdvice;
 import com.panlingxiao.spring.aop.service.ProductService;
 import com.panlingxiao.spring.aop.service.impl.ProductServiceImpl;
 import org.junit.Test;
@@ -44,11 +46,10 @@ public class ProxyFactoryTest {
         ProductService productService = (ProductService) proxyFactory.getProxy();
         System.out.println(productService.getClass().getName());
         System.out.println("--------------------------");
-
         productService.addProduct();
         System.out.println("-------------------------");
         productService.deleteProduct();
-
+        System.out.println("-------------------------");
     }
 
 
@@ -64,23 +65,9 @@ public class ProxyFactoryTest {
         proxyFactory.addAdvisor(advisor);
         ProductService productService = (ProductService) proxyFactory.getProxy();
         productService.addProduct();
+        System.out.println("-------------------------");
+        // delete方法没有执行Advice
         productService.deleteProduct();
-    }
-
-    static class MyBeforeAdvice implements MethodBeforeAdvice {
-
-        @Override
-        public void before(Method method, Object[] args, Object target) throws Throwable {
-            System.out.println("before real subject invoke");
-        }
-    }
-
-    static class MyAfterAdvice implements AfterReturningAdvice {
-
-        @Override
-        public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
-            System.out.println("after real subject invoke");
-        }
     }
 
 
