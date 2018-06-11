@@ -60,9 +60,8 @@ public class PointcutTest {
 
     @Test
     public void testControlFlowPointcut() throws Exception{
-        ControlFlowPointcut pointcut = new ControlFlowPointcut(ProductServiceImpl.class, "addProduct");
-        Method method = ProductService.class.getDeclaredMethod("addProduct");
-        Assert.assertFalse(pointcut.matches(method,ProductServiceImpl.class,new Object[]{}));
+        ControlFlowPointcut pointcut = new ControlFlowPointcut(PointcutTest.class);
+        Assert.assertTrue(pointcut.matches(null,PointcutTest.class,new Object[]{}));
     }
 
 
@@ -90,8 +89,6 @@ public class PointcutTest {
         for (Method method : methods) {
             Assert.assertTrue(methodMatcher.matches(method, CategoryService.class));
         }
-
-
     }
 
 }

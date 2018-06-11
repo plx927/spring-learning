@@ -75,6 +75,7 @@ public class GreetingAdviceTest {
 
         Waiter waiter = (Waiter) proxyFactory.getProxy();
         waiter.serveTo("LiLei");
+        System.out.println(waiter.getClass().getName());
 
         System.out.println(waiter.getClass().getName());
         System.out.println(waiter instanceof NativeWaiter);
