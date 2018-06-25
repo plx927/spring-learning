@@ -1,6 +1,6 @@
 package com.panlingxiao.spring.aop.advisor;
 
-import com.panlingxiao.spring.aop.service.Waiter;
+import com.panlingxiao.spring.aop.bean.Waiter;
 import org.aopalliance.aop.Advice;
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;

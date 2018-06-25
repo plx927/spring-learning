@@ -1,33 +1,21 @@
 package com.panlingxiao.spring.aop.test.aspect;
 
-import com.panlingxiao.spring.aop.service.DemoAnnotationService;
-import com.panlingxiao.spring.aop.service.DemoMethodService;
+import com.panlingxiao.spring.aop.service.ProductService;
 import com.panlingxiao.spring.aop.test.AopBaseTest;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-public class LogAspectTest extends AopBaseTest {
+import javax.annotation.Resource;
 
-    @Autowired
-    private DemoMethodService demoMethodService;
+/**
+ * Created by panlingxiao on 2018/6/24.
+ */
+public class LogAspectTest extends AopBaseTest{
 
-
-    @Autowired
-    private DemoAnnotationService demoAnnotationService;
-
-    /**
-     * 注解式拦截
-     */
-    @Test
-    public void testAnnotationPointCut() {
-        demoAnnotationService.add();
-    }
-
+    @Resource
+    private ProductService productService;
 
     @Test
-    public void testMethodPointCut() {
-        demoMethodService.add();
-        demoMethodService.add("hello");
-        demoMethodService.add("world", 123);
+    public void testAddProduct(){
+        productService.addProduct();
     }
 }

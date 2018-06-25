@@ -1,4 +1,4 @@
-package com.panlingxiao.spring.aop.service;
+package com.panlingxiao.spring.aop.bean;
 
 import lombok.extern.slf4j.Slf4j;
 

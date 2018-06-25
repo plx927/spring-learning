@@ -2,11 +2,10 @@ package com.panlingxiao.spring.aop.test.advice;
 
 import com.panlingxiao.spring.aop.advice.*;
 import com.panlingxiao.spring.aop.service.Monitorable;
-import com.panlingxiao.spring.aop.service.Waiter;
-import com.panlingxiao.spring.aop.service.impl.NativeWaiter;
+import com.panlingxiao.spring.aop.bean.Waiter;
+import com.panlingxiao.spring.aop.bean.NativeWaiter;
 import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactory;
-import org.springframework.aop.interceptor.ConcurrencyThrottleInterceptor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -51,7 +50,7 @@ public class GreetingAdviceTest {
     }
 
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void testThrowsAdvice() {
         ProxyFactory proxyFactory = new ProxyFactory(new NativeWaiter());
         proxyFactory.addAdvice(new GreetingAfterAdvice());

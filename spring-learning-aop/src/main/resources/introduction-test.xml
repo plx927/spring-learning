@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean class="com.panlingxiao.spring.aop.service.impl.NativeWaiter" id="nativeWaiter"/>
+    <bean class="com.panlingxiao.spring.aop.bean.NativeWaiter" id="nativeWaiter"/>
     <bean class="com.panlingxiao.spring.aop.advice.ControllablePerformanceMonitor" id="monitor"/>
 
     <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="waiter">

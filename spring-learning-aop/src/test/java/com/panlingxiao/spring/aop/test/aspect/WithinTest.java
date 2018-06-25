@@ -12,7 +12,6 @@ public class WithinTest extends AopBaseTest {
     private ProductService productService;
 
 
-
     /**
      * PointCut为某一个具体的类
      */
