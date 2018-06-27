@@ -64,6 +64,7 @@ public class AdviceTest {
     @Test
     public void testIntroductionAdvice() {
         ProxyFactory proxyFactory = new ProxyFactory(new Singer());
+        // 设置基于CGLIB的类代理
         proxyFactory.setProxyTargetClass(true);
         proxyFactory.addAdvice(new LockAdvice());
         Singer singer = (Singer) proxyFactory.getProxy();
@@ -86,8 +87,9 @@ public class AdviceTest {
     @Test
     public void testIntroductionAdvice2() {
         ProxyFactory proxyFactory = new ProxyFactory(new Singer());
-        proxyFactory.setProxyTargetClass(true);
+        // 设置基于CGLIB的类代理
         proxyFactory.addAdvice(new LockMixin());
+        proxyFactory.setProxyTargetClass(true);
         Singer singer = (Singer) proxyFactory.getProxy();
         singer.sing("hello");
 
