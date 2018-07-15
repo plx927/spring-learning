@@ -1,4 +1,4 @@
-package com.panlingxiao.spring.aop.test.api;
+package com.panlingxiao.spring.aop.test.framework;
 
 import com.panlingxiao.spring.aop.aspect.WithinAspect;
 import com.panlingxiao.spring.aop.service.ProductService;

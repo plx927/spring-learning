@@ -1,16 +1,12 @@
-package com.panlingxiao.spring.aop.test.api;
+package com.panlingxiao.spring.aop.test.framework;
 
 import com.panlingxiao.spring.aop.advice.MyAfterAdvice;
 import com.panlingxiao.spring.aop.advice.MyBeforeAdvice;
 import com.panlingxiao.spring.aop.service.ProductService;
 import com.panlingxiao.spring.aop.service.impl.ProductServiceImpl;
 import org.junit.Test;
-import org.springframework.aop.AfterReturningAdvice;
-import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.NameMatchMethodPointcutAdvisor;
-
-import java.lang.reflect.Method;
 
 /**
  * Created by panlingxiao on 2016/6/30.

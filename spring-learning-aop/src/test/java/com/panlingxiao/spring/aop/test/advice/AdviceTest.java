@@ -1,6 +1,7 @@
 package com.panlingxiao.spring.aop.test.advice;
 
 import com.panlingxiao.spring.aop.advice.*;
+import com.panlingxiao.spring.aop.bean.Player;
 import com.panlingxiao.spring.aop.bean.Singer;
 import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactory;
@@ -23,8 +24,8 @@ public class AdviceTest {
         proxyFactory.addAdvice(new TracingInterceptor());
 
         // 获取代理对象
-        Singer singer = (Singer) proxyFactory.getProxy();
-        singer.sing("hello world");
+        Player singer = (Player) proxyFactory.getProxy();
+        singer.play("hello world");
     }
 
 
@@ -35,9 +36,19 @@ public class AdviceTest {
         proxyFactory.addAdvice(new SingerThrowsAdvice());
 
         // 获取代理对象
-        Singer singer = (Singer) proxyFactory.getProxy();
-        singer.sing(null);
+        Player singer = (Player) proxyFactory.getProxy();
+        singer.play(null);
     }
+
+    @Test
+    public void testAfterAdvice() {
+        ProxyFactory proxyFactory = new ProxyFactory(new Singer());
+        proxyFactory.addAdvice(new SingerAfterAdvice());
+        proxyFactory.addAdvice(new MyAfterAdvice());
+        Player singer = (Player) proxyFactory.getProxy();
+        singer.play("star!");
+    }
+
 
     @Test
     public void testIntroduction() {
@@ -65,45 +76,24 @@ public class AdviceTest {
     public void testIntroductionAdvice() {
         ProxyFactory proxyFactory = new ProxyFactory(new Singer());
         // 设置基于CGLIB的类代理
-        proxyFactory.setProxyTargetClass(true);
+        //proxyFactory.setProxyTargetClass(true);
         proxyFactory.addAdvice(new LockAdvice());
-        Singer singer = (Singer) proxyFactory.getProxy();
-        singer.sing("hello");
+        Player singer = (Player) proxyFactory.getProxy();
+        singer.play("hello");
 
         Lockable lockable = (Lockable) singer;
         lockable.lock();
         try {
-            singer.sing("hello");
+            singer.play("hello");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         lockable.unlock();
-        singer.sing("hello");
+        singer.play("hello");
 
-    }
+        System.out.println(singer.getClass().getName());
 
-
-    @Test
-    public void testIntroductionAdvice2() {
-        ProxyFactory proxyFactory = new ProxyFactory(new Singer());
-        // 设置基于CGLIB的类代理
-        proxyFactory.addAdvice(new LockMixin());
-        proxyFactory.setProxyTargetClass(true);
-        Singer singer = (Singer) proxyFactory.getProxy();
-        singer.sing("hello");
-
-        Lockable lockable = (Lockable) singer;
-        lockable.lock();
-
-        try {
-            singer.sing("hello");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        lockable.unlock();
-        singer.sing("hello");
     }
 
 

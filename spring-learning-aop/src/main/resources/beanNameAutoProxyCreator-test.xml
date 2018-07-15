@@ -18,4 +18,7 @@
     <bean class="com.panlingxiao.spring.aop.service.impl.ProductServiceImpl" id="productService"/>
 
     <bean class="com.panlingxiao.spring.aop.advice.MyBeforeAdvice" id="myBeforeAdvice"/>
+
+
+
 </beans>

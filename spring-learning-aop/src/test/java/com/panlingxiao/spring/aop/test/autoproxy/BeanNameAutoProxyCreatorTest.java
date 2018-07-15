@@ -13,29 +13,22 @@ import javax.annotation.Resource;
 import java.lang.reflect.Proxy;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath*:beanNameAutoProxy.xml")
-public class BeanNameAutoProxyTest {
+@ContextConfiguration(locations = "classpath*:beanNameAutoProxyCreator-test.xml")
+public class BeanNameAutoProxyCreatorTest {
 
     @Resource
     private ProductService productService;
-
 
     @Resource
     private CategoryService categoryService;
 
 
     @Test
-    public void testProductService() {
+    public void testAutoProxyCreator() {
         Assert.assertTrue(Proxy.isProxyClass(productService.getClass()));
-
+        Assert.assertTrue(Proxy.isProxyClass(categoryService.getClass()));
         productService.addProduct();
     }
 
-
-    @Test
-    public void testCategoryService() {
-        Assert.assertTrue(Proxy.isProxyClass(categoryService.getClass()));
-        categoryService.addCategory();
-    }
 
 }

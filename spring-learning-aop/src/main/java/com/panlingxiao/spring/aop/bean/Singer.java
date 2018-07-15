@@ -5,9 +5,9 @@ import java.util.Objects;
 /**
  * Created by panlingxiao on 2018/6/25.
  */
-public class Singer {
+public class Singer implements Player{
 
-    public String sing(String song) {
+    public String play(String song) {
         if (Objects.isNull(song)) {
             throw new IllegalArgumentException("song is null");
         }
