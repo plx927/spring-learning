@@ -1,4 +1,4 @@
-package com.panlingxiao.spring.aop.test.aspect;
+package com.panlingxiao.spring.aop.test.framework;
 
 import com.panlingxiao.spring.aop.service.PersonService;
 import org.junit.Test;
@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath*:spring-1.xml")
-public class Spring1Test {
+@ContextConfiguration(locations = "classpath*:proxyFactoryBean-test.xml")
+public class ProxyFactoryBeanTest {
 
     @Autowired
     private PersonService personService;
