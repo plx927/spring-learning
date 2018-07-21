@@ -1,4 +1,4 @@
-package com.panlingxiao.spring.aop.test.aspect;
+package com.panlingxiao.spring.aop.test.aspectj;
 
 import com.panlingxiao.spring.aop.service.ProductService;
 import com.panlingxiao.spring.aop.test.AopBaseTest;

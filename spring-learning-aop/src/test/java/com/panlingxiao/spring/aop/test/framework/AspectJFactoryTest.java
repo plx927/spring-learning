@@ -1,6 +1,9 @@
 package com.panlingxiao.spring.aop.test.framework;
 
+import com.panlingxiao.spring.aop.aspect.ProGreetingAspect;
 import com.panlingxiao.spring.aop.aspect.WithinAspect;
+import com.panlingxiao.spring.aop.bean.NativeWaiter;
+import com.panlingxiao.spring.aop.bean.Waiter;
 import com.panlingxiao.spring.aop.service.ProductService;
 import com.panlingxiao.spring.aop.service.impl.ProductServiceImpl;
 import org.junit.Test;
@@ -25,4 +28,17 @@ public class AspectJFactoryTest {
         productService.deleteProduct();
 
     }
+
+
+    @Test
+    public void testNativeWaiter() {
+        AspectJProxyFactory aspectJProxyFactory = new AspectJProxyFactory(new NativeWaiter());
+        aspectJProxyFactory.addAspect(new ProGreetingAspect());
+        Waiter waiter = aspectJProxyFactory.getProxy();
+        waiter.greetTo("Tom");
+        System.out.println("------------------------------");
+        waiter.serveTo("Tom");
+    }
+
+
 }

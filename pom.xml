@@ -39,6 +39,7 @@
         <module>spring-learning-tx</module>
         <module>spring-learning-webmvc</module>
         <module>spring-learning-web-config</module>
+        <module>spring-leanring-resource</module>
     </modules>
 
     <dependencyManagement>

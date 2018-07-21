@@ -1,6 +1,5 @@
 package com.panlingxiao.spring.aop.bean;
 
-import com.panlingxiao.spring.aop.bean.Waiter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
