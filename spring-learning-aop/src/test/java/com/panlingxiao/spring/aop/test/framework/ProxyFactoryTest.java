@@ -42,7 +42,11 @@ public class ProxyFactoryTest {
         ProductService productService = (ProductService) proxyFactory.getProxy();
         System.out.println(productService.getClass().getName());
         System.out.println("--------------------------");
+
         productService.addProduct();
+        System.out.println("-------------------------");
+        productService.addProduct("apple");
+
         System.out.println("-------------------------");
         productService.deleteProduct();
         System.out.println("-------------------------");
@@ -60,8 +64,12 @@ public class ProxyFactoryTest {
         advisor.setAdvice(new MyBeforeAdvice());
         proxyFactory.addAdvisor(advisor);
         ProductService productService = (ProductService) proxyFactory.getProxy();
+
         productService.addProduct();
         System.out.println("-------------------------");
+        productService.addProduct("apple");
+        System.out.println("-------------------------");
+
         // delete方法没有执行Advice
         productService.deleteProduct();
     }

@@ -2,25 +2,27 @@ package com.panlingxiao.spring.aop.service.impl;
 
 import com.panlingxiao.spring.aop.annotation.LogAction;
 import com.panlingxiao.spring.aop.service.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class ProductServiceImpl implements ProductService {
 
     @LogAction(name = "abc")
     @Override
     public void addProduct() {
-        System.out.println("add product");
+        log.info("add product");
     }
 
     @Override
     public void addProduct(String product) {
-        System.out.println("add product,product:" + product);
+        log.info("add product,product is {}", product);
 
     }
 
     @Override
     public void deleteProduct() {
-        System.out.println("delete product");
+        log.info("delete product");
     }
 }

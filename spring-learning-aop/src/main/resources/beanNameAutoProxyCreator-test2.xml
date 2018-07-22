@@ -7,6 +7,12 @@
     <bean class="com.panlingxiao.spring.aop.bean.Boo" id="boo"/>
 
     <bean class="com.panlingxiao.spring.aop.advice.MyBeforeAdvice" id="myBeforeAdvice"/>
+    <bean class="com.panlingxiao.spring.aop.advice.MyAfterAdvice" id="myAfterAdvice"/>
+
+    <bean class="com.panlingxiao.spring.aop.advisor.MyStaticMethodPointcutAdvisor" id="methodPointcutAdvisor">
+        <constructor-arg name="pointcutExpression" value="execution(* *(..))"/>
+        <constructor-arg name="advice" ref="myAfterAdvice"/>
+    </bean>
 
     <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator" id="autoProxyCreator">
         <property name="beanNames">
@@ -19,6 +25,7 @@
         <property name="interceptorNames">
             <list>
                 <value>myBeforeAdvice</value>
+                <value>methodPointcutAdvisor</value>
             </list>
         </property>
     </bean>

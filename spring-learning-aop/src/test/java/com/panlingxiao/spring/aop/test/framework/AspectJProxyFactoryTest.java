@@ -9,7 +9,7 @@ import com.panlingxiao.spring.aop.service.impl.ProductServiceImpl;
 import org.junit.Test;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 
-public class AspectJFactoryTest {
+public class AspectJProxyFactoryTest {
 
     @Test
     public void testAspectJFactory() {
