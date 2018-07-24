@@ -74,5 +74,4 @@ public class ProxyFactoryTest {
         productService.deleteProduct();
     }
 
-
 }
